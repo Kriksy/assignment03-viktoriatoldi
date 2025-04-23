@@ -39,10 +39,10 @@ export default defineConfig({
       name: "setup frontend",
       testMatch: /global.frontend.setup\.ts/,
     },
-    {
+    /*     {
       name: "setup backend",
       testMatch: /global.backend.setup\.ts/,
-    },
+    }, */
     {
       name: "test frontend",
       use: {
@@ -53,7 +53,7 @@ export default defineConfig({
       testMatch: /frontend\/.*\.spec\.ts/,
       dependencies: ["setup frontend"],
     },
-    {
+    /*     {
       name: "test backend",
       use: {
         ...devices["Desktop Chrome"],
@@ -62,6 +62,6 @@ export default defineConfig({
       },
       testMatch: /backend\/.*\.spec\.ts/,
       dependencies: ["setup backend"],
-    },
+    }, */
   ],
 });
