@@ -38,6 +38,10 @@ jobs:
       - name: Wait until the application is up
         run: npx wait-on http://localhost:3000
 
+      # Create temp playwright folder
+      - name: Create temp playwright folder
+        run: mkdir -p playwright/.auth
+
       # Run tests
       - name: Run tests
         env:
