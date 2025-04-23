@@ -8,6 +8,8 @@ import dotenv from "dotenv";
 import path from "path";
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
+export const STORAGE_STATE = path.join(__dirname, "playwright/.auth/user.json");
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -26,8 +28,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.BASE_URL,
-
+    baseURL: process.env.BASE_URL || "http://localhost:3000",
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
   },
@@ -39,8 +40,13 @@ export default defineConfig({
       testMatch: /global.setup\.ts/,
     },
     {
-      name: "tests",
-      use: { ...devices["Desktop Chrome"] },
+      name: "chromium",
+      use: {
+        ...devices["Desktop Chrome"],
+        // Use prepared auth state.
+        storageState: STORAGE_STATE,
+      },
+      testMatch: /.*\.spec\.ts/,
       dependencies: ["setup"],
     },
   ],
