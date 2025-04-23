@@ -36,18 +36,32 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: "setup",
-      testMatch: /global.setup\.ts/,
+      name: "setup frontend",
+      testMatch: /global.frontend.setup\.ts/,
     },
     {
-      name: "chromium",
+      name: "setup backend",
+      testMatch: /global.backend.setup\.ts/,
+    },
+    {
+      name: "test frontend",
       use: {
         ...devices["Desktop Chrome"],
         // Use prepared auth state.
         storageState: STORAGE_STATE,
       },
-      testMatch: /.*\.spec\.ts/,
-      dependencies: ["setup"],
+      testMatch: /frontend\/.*\.spec\.ts/,
+      dependencies: ["setup frontend"],
+    },
+    {
+      name: "test backend",
+      use: {
+        ...devices["Desktop Chrome"],
+        // Use prepared auth state.
+        storageState: STORAGE_STATE,
+      },
+      testMatch: /backend\/.*\.spec\.ts/,
+      dependencies: ["setup backend"],
     },
   ],
 });
