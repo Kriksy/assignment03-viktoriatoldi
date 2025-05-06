@@ -39,10 +39,11 @@ export default defineConfig({
       name: "setup frontend",
       testMatch: /global.frontend.setup\.ts/,
     },
-    /*     {
+    {
       name: "setup backend",
       testMatch: /global.backend.setup\.ts/,
-    }, */
+      dependencies: ["test frontend"],
+    },
     {
       name: "test frontend",
       use: {
@@ -53,15 +54,15 @@ export default defineConfig({
       testMatch: /frontend\/.*\.spec\.ts/,
       dependencies: ["setup frontend"],
     },
-    /*     {
+    {
       name: "test backend",
       use: {
         ...devices["Desktop Chrome"],
         // Use prepared auth state.
-        storageState: STORAGE_STATE,
+        //storageState: STORAGE_STATE,
       },
       testMatch: /backend\/.*\.spec\.ts/,
       dependencies: ["setup backend"],
-    }, */
+    },
   ],
 });

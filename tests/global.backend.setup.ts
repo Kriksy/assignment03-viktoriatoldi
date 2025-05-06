@@ -8,7 +8,7 @@ import { faker } from "@faker-js/faker";
 import path from "path";
 import fs from "fs";
 
-const authFile = path.join(__dirname, "../playwright/.auth/user.json");
+const authFile = path.join(__dirname, "../playwright/.auth/backend_user.json");
 
 // Run before all tests in file
 setup("Login", async ({ playwright, request }) => {
