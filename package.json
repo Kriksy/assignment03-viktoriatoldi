@@ -1,0 +1,22 @@
+{
+  "name": "assignment03-viktoriatoldi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "serve": "npx json-server db.json",
+    "ui-mode": "npx playwright test --ui",
+    "run-tests": "npx playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.7.5",
+    "dotenv": "^16.4.5"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.0.3"
+  }
+}
