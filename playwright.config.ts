@@ -8,7 +8,10 @@ import dotenv from "dotenv";
 import path from "path";
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
-export const STORAGE_STATE = path.join(__dirname, "playwright/.auth/user.json");
+export const STORAGE_STATE = path.join(
+  __dirname,
+  "playwright/.auth/frontend_user.json"
+);
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -56,11 +59,6 @@ export default defineConfig({
     },
     {
       name: "test backend",
-      use: {
-        ...devices["Desktop Chrome"],
-        // Use prepared auth state.
-        //storageState: STORAGE_STATE,
-      },
       testMatch: /backend\/.*\.spec\.ts/,
       dependencies: ["setup backend"],
     },
